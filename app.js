@@ -1,5 +1,7 @@
 const STORAGE_KEY = 'backend-learning-lab-progress-v1';
-const API_BASE = 'http://localhost:8080/api';
+const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+  ? 'http://localhost:8080/api'
+  : 'https://backend-learning-lab-api.onrender.com/api';
 const encouragements = [
   ['Mỗi dòng code bạn hiểu hôm nay là một viên gạch cho sự tự tin ngày mai.', 'Bắt đầu thật nhỏ, nhưng bắt đầu ngay.'],
   ['Bạn không cần biết tất cả ngay hôm nay. Bạn chỉ cần hiểu thêm một điều.', 'Tiến bộ đều đặn quan trọng hơn tốc độ.'],
