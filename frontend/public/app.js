@@ -11,7 +11,7 @@ const encouragements = [
 ];
 
 const curriculum = [
-  { id:'claude', title:'Claude Code và AI Engineering', icon:'🤖', desc:'Học cách dùng Claude, Claude Code, Skills, Anthropic API và MCP trong quy trình phát triển phần mềm.', lessons:[
+  { id:'claude', title:'Claude Code và AI Engineering', icon:'🤖', desc:'Lộ trình từ số 0: hiểu Claude, sử dụng hiệu quả, làm việc với Claude Code rồi xây ứng dụng AI.', lessons:[
     ['claude-what','Claude là gì?','Mô hình ngôn ngữ, context và khác biệt giữa chat với coding agent.'],
     ['claude-first','Cuộc trò chuyện đầu tiên','Viết prompt rõ ràng, cung cấp context và đánh giá kết quả.'],
     ['claude-results','Cách nhận kết quả tốt hơn','Chỉ dẫn, ví dụ, format đầu ra và vòng lặp cải thiện.'],
@@ -45,6 +45,62 @@ const curriculum = [
     ['mcp-client','Xây MCP client','Kết nối client, gọi tool, đọc resource và dùng prompt.'],
     ['ai-workflows','Agents và workflows','Chaining, routing, parallelization và chọn pattern phù hợp.'],
     ['ai-safety','Kiểm chứng và an toàn khi dùng AI','Permissions, secrets, prompt injection, test và human review.'],
+  ]},
+  { id:'claude-basics', title:'Phần 1 · Làm quen với AI và Claude', icon:'🌱', desc:'Bắt đầu từ khái niệm AI, mô hình ngôn ngữ và cách trò chuyện an toàn với Claude.', lessons:[
+    ['claude-ai-zero','AI tạo sinh từ con số 0','AI, machine learning, mô hình ngôn ngữ và AI tạo sinh qua ví dụ gần gũi.'],
+    ['claude-what','Claude là gì?','Claude làm được gì, không làm tốt điều gì và vì sao câu trả lời có thể sai.'],
+    ['claude-first','Cuộc trò chuyện đầu tiên','Đăng nhập, chọn cách sử dụng và gửi yêu cầu đầu tiên rõ ràng.'],
+    ['claude-context-zero','Context và giới hạn hội thoại','Hiểu thông tin đầu vào, lịch sử hội thoại và cửa sổ context.'],
+    ['claude-safety-zero','Quyền riêng tư và sử dụng an toàn','Nhận biết dữ liệu nhạy cảm, kiểm tra thông tin và tránh chia sẻ bí mật.'],
+  ]},
+  { id:'claude-conversation', title:'Phần 2 · Giao tiếp hiệu quả với Claude', icon:'💬', desc:'Viết yêu cầu dễ hiểu, đưa bối cảnh và cải thiện câu trả lời qua nhiều lượt.', lessons:[
+    ['claude-prompt-zero','Cấu trúc một yêu cầu tốt','Mục tiêu, bối cảnh, dữ liệu đầu vào, giới hạn và định dạng đầu ra.'],
+    ['claude-results','Cách nhận kết quả tốt hơn','Dùng ví dụ, chia việc lớn thành bước nhỏ và yêu cầu Claude nêu giả định.'],
+    ['claude-followup-zero','Hỏi tiếp và sửa hướng trả lời','Dùng hội thoại nhiều lượt để bổ sung tiêu chí và sửa hiểu nhầm.'],
+    ['claude-verify-zero','Đánh giá câu trả lời','Kiểm tra tính đúng, nguồn, giả định và phần cần xác minh độc lập.'],
+    ['claude-projects','Projects và kiến thức nền','Tạo không gian làm việc có tài liệu và chỉ dẫn cho chủ đề dài hạn.'],
+    ['claude-artifacts','Artifacts và sản phẩm đầu ra','Tạo, xem và tinh chỉnh tài liệu, bảng hoặc prototype cùng Claude.'],
+  ]},
+  { id:'claude-code-start', title:'Phần 3 · Bắt đầu với Claude Code', icon:'⌨️', desc:'Hiểu coding agent trước khi cài đặt; học cách giao việc nhỏ và kiểm tra thay đổi.', lessons:[
+    ['cc-agent','Coding agent hoạt động thế nào?','Agentic loop, công cụ, quyền truy cập và vai trò kiểm tra của con người.'],
+    ['cc-install','Cài đặt và mở Claude Code','Chuẩn bị tài khoản, terminal hoặc IDE và mở đúng thư mục dự án.'],
+    ['cc-first-session-zero','Phiên làm việc đầu tiên','Yêu cầu Claude đọc cấu trúc dự án và giải thích trước khi sửa code.'],
+    ['cc-prompt','Giao nhiệm vụ cho codebase','Nêu mục tiêu, phạm vi, tiêu chí hoàn thành và giới hạn thay đổi.'],
+    ['cc-plan','Explore → Plan → Code → Commit','Quy trình tìm hiểu, lập kế hoạch, thực hiện, kiểm tra và lưu thay đổi.'],
+    ['cc-context','Quản lý context','Khi nào dùng /context, /compact, /clear và cách lưu quyết định quan trọng.'],
+    ['cc-review','Review và kiểm chứng code','Đọc diff, chạy test và xác nhận nhận xét của agent bằng bằng chứng.'],
+  ]},
+  { id:'claude-code-workflow', title:'Phần 4 · Làm việc với Claude Code', icon:'🧰', desc:'Tạo quy tắc dự án, Skills, subagents và guardrails cho công việc lặp lại.', lessons:[
+    ['cc-claude-md','CLAUDE.md từ đầu','Viết chỉ dẫn ngắn về cấu trúc, lệnh, convention và cách kiểm tra dự án.'],
+    ['cc-subagents','Subagents và phân chia việc','Khi nào tách nhiệm vụ, cách giao đầu ra và tổng hợp kết quả.'],
+    ['cc-skills','Skills là gì?','Đóng gói quy trình dùng lại và phân biệt Skill với chỉ dẫn dự án.'],
+    ['cc-skill-build','Tạo Skill đầu tiên','Tạo SKILL.md, mô tả trigger và viết các bước có thể làm theo.'],
+    ['cc-skill-share','Chia sẻ và sửa lỗi Skills','Tổ chức Skill, kiểm tra lý do không được kích hoạt và cập nhật an toàn.'],
+    ['cc-permission','Quyền thực thi và permission modes','Chọn mức tự động hóa phù hợp và xem xét lệnh trước khi chạy.'],
+    ['cc-hooks','Hooks và guardrails','Tự động hóa bước kiểm tra và ngăn hành động ngoài quy tắc dự án.'],
+    ['cc-automation','Tác vụ tự động và headless','Chạy tác vụ lặp lại, đặt đầu vào/đầu ra và xác minh kết quả tự động.'],
+    ['cc-github','GitHub và quy trình review','Dùng Claude hỗ trợ pull request, review và kiểm tra CI.'],
+  ]},
+  { id:'claude-api', title:'Phần 5 · Xây ứng dụng với Claude API', icon:'🔌', desc:'Từ request đầu tiên đến hội thoại, tool use và truy xuất tri thức.', lessons:[
+    ['api-claude','API, key và request đầu tiên','Vai trò API key, headers, model, system instruction và messages.'],
+    ['api-conversation','Hội thoại nhiều lượt','Lưu lịch sử, quản lý token và gửi đúng phần context cần thiết.'],
+    ['api-tools','Tool use và structured output','Luồng gọi tool, kiểm tra schema, xác thực quyền và trả kết quả.'],
+    ['api-rag','RAG và tìm kiếm tri thức','Chunking, embeddings, BM25 và cách kiểm tra chất lượng truy xuất.'],
+    ['api-features','Các khả năng nâng cao','Tổng quan hình ảnh, PDF, citations, caching và extended thinking.'],
+  ]},
+  { id:'claude-mcp', title:'Phần 6 · Kết nối công cụ với MCP', icon:'🔗', desc:'Hiểu giao thức MCP và thực hành các thành phần client/server, tools, resources, prompts.', lessons:[
+    ['mcp-intro','MCP giải quyết vấn đề gì?','Client, server, transport và luồng trao đổi giữa AI với hệ thống ngoài.'],
+    ['mcp-tools','MCP tools','Khai báo hành động, schema đầu vào, quyền hạn và xác nhận trước thao tác rủi ro.'],
+    ['mcp-resources','MCP resources','Cung cấp dữ liệu đọc được qua URI và chọn resource cho đúng nhu cầu.'],
+    ['mcp-prompts','MCP prompts','Tạo mẫu workflow để người dùng gọi lại một cách nhất quán.'],
+    ['mcp-python','Xây MCP server bằng Python','Tạo server nhỏ, khai báo capability và kiểm tra bằng MCP Inspector.'],
+    ['mcp-client','Xây MCP client','Kết nối server, khám phá tool/resource và xử lý phản hồi có lỗi.'],
+  ]},
+  { id:'claude-capstone', title:'Phần 7 · Dự án tổng kết và ứng dụng an toàn', icon:'🚀', desc:'Kết hợp kiến thức để thiết kế một trợ lý nhỏ, đánh giá chất lượng và trình bày lựa chọn.', lessons:[
+    ['ai-workflows','Chọn mô hình workflow cho AI','So sánh chaining, routing, parallelization và agent theo mức độ cần thiết.'],
+    ['ai-safety','Bảo mật và kiểm chứng ứng dụng AI','Bảo vệ secrets, chống prompt injection, giới hạn tool và có human review.'],
+    ['claude-capstone','Dự án: trợ lý hỏi đáp tài liệu','Lập yêu cầu, thiết kế luồng, tạo prototype và viết kế hoạch kiểm thử.'],
+    ['claude-explain-capstone','Trình bày dự án như một kỹ sư','Giải thích kiến trúc, trade-off, rủi ro và cách đo chất lượng bằng lời rõ ràng.'],
   ]},
   { id:'start', title:'Bắt đầu với Backend', icon:'🚀', desc:'Hiểu backend là gì, cách chạy project và cách học hiệu quả.', lessons:[
     ['start-backend','Backend là gì?','Client, server, database, API và vòng đời một request.'],
@@ -131,6 +187,15 @@ const topics = {
 
 const lessonTopics = {
   'claude-what': ['Claude là một mô hình ngôn ngữ có thể nhận context và tạo phản hồi. Claude Code là coding agent: nó có thể đọc repository, gọi tool, chạy lệnh, sửa file và tự kiểm tra theo một vòng lặp. Khác biệt quan trọng với chat thông thường là agent có quyền hành động trong môi trường, nên permission và verification trở thành một phần của kỹ thuật sử dụng.', 'Người dùng → Claude nhận context → chọn tool → đọc/chỉnh sửa code → chạy test → báo kết quả', 'Viết một đoạn giải thích ngắn: khi nào dùng chat, khi nào dùng Claude Code, và rủi ro khi cho agent quyền chạy lệnh.', ['Claude Code khác chatbot ở điểm nào?', 'Vì sao tool và permission quan trọng với coding agent?']],
+  'claude-ai-zero': ['Trí tuệ nhân tạo là tên gọi chung cho các hệ thống thực hiện nhiệm vụ vốn cần một phần năng lực nhận biết hoặc suy luận. Machine learning học quy luật từ ví dụ; mô hình ngôn ngữ học các mẫu trong văn bản để dự đoán phần tiếp theo. AI tạo sinh dùng năng lực này để tạo câu trả lời, tóm tắt, mã hoặc hình ảnh. Nó không “biết” như con người và có thể tạo thông tin nghe hợp lý nhưng sai.', 'Ví dụ: nhiều đoạn hội thoại → mô hình học mẫu ngôn ngữ → nhận câu hỏi mới → tạo câu trả lời theo context.', 'Hãy giải thích cho một người không làm công nghệ sự khác nhau giữa tìm kiếm Google và hỏi một mô hình AI.', ['Mô hình ngôn ngữ tạo câu trả lời theo cách khái quát nào?', 'Vì sao câu trả lời trôi chảy chưa chắc đã đúng?']],
+  'claude-context-zero': ['Context là toàn bộ thông tin Claude nhận để trả lời ở thời điểm hiện tại: chỉ dẫn, tin nhắn, tệp đính kèm và lịch sử hội thoại còn được đưa vào. Cửa sổ context có giới hạn. Nếu thiếu dữ kiện, Claude phải suy đoán; nếu đưa quá nhiều thông tin không liên quan, phần quan trọng dễ bị chìm. Vì vậy hãy nêu mục tiêu, cung cấp tài liệu liên quan và yêu cầu Claude nói rõ chỗ chưa biết.', 'Yêu cầu + tài liệu liên quan + lịch sử hội thoại → context đầu vào → câu trả lời.\nThiếu context → câu trả lời dễ đoán sai.', 'Hãy viết lại câu “giúp tôi làm báo cáo” thành yêu cầu có mục tiêu, người đọc, dữ liệu và định dạng đầu ra.', ['Context gồm những gì?', 'Làm sao xử lý khi Claude thiếu dữ kiện?']],
+  'claude-safety-zero': ['Hãy xem mọi nội dung tạo sinh là bản nháp cần đánh giá. Không nhập mật khẩu, API key, dữ liệu khách hàng hoặc mã nguồn nội bộ vào nơi chưa được công ty cho phép. Với thông tin quan trọng, hãy kiểm tra bằng tài liệu gốc hoặc nguồn đáng tin; với code, chạy test và xem diff. Phân biệt dữ liệu công khai, nội bộ và bí mật trước khi chia sẻ.', 'Trước khi gửi: dữ liệu này có nhạy cảm không?\nSau khi nhận: kết luận có nguồn hoặc cách kiểm chứng không?', 'Lấy một ví dụ về thông tin có thể hỏi AI công khai và một ví dụ phải giữ trong môi trường được công ty phê duyệt.', ['Vì sao cần kiểm tra chính sách dữ liệu trước khi gửi tài liệu?', 'Bạn sẽ xác minh một câu trả lời quan trọng bằng cách nào?']],
+  'claude-prompt-zero': ['Một yêu cầu dễ làm theo thường nói rõ năm điều: muốn đạt kết quả gì, bối cảnh nào liên quan, đầu vào cần dùng, các giới hạn phải tuân thủ và định dạng mong muốn. Người mới thường chỉ nêu chủ đề (“nói về database”), khiến Claude phải tự đoán độ sâu. Hãy xác định người nghe và mức nền tảng để câu trả lời vừa đủ.', 'Mục tiêu: giải thích index database\nBối cảnh: tôi dùng PostgreSQL trong Spring Boot\nĐầu ra: giải thích dễ hiểu + ví dụ SQL + 3 câu hỏi tự kiểm tra\nGiới hạn: chưa đi sâu execution plan', 'Viết prompt để Claude giải thích HTTP status code cho một backend developer mới, gồm ví dụ và bài tập.', ['Một prompt rõ thường cung cấp thông tin gì?', 'Khi nào nên chia yêu cầu lớn thành các yêu cầu nhỏ?']],
+  'claude-followup-zero': ['Không cần cố viết prompt hoàn hảo ngay lượt đầu. Hãy xem câu trả lời như phiên bản đầu: chỉ ra điểm chưa đúng, bổ sung dữ liệu còn thiếu và yêu cầu sửa một phần cụ thể. Nếu cuộc trò chuyện đi lệch, nhắc lại mục tiêu và những quyết định đã thống nhất. Với việc mới hoàn toàn, yêu cầu Claude hỏi lại trước khi đưa kết luận.', '1. Yêu cầu bản nháp\n2. Chỉ rõ chỗ thiếu hoặc sai\n3. Bổ sung dữ kiện\n4. Yêu cầu sửa theo tiêu chí\n5. Kiểm tra bản cuối', 'Bắt đầu bằng prompt mơ hồ “viết email xin nghỉ”. Sau đó bổ sung người nhận, ngày nghỉ, giọng điệu và định dạng để thấy kết quả đổi ra sao.', ['Phản hồi tiếp theo nên nói rõ điều gì?', 'Làm sao kéo hội thoại trở lại mục tiêu?']],
+  'claude-verify-zero': ['Đánh giá câu trả lời theo nhiệm vụ chứ không theo độ tự tin của giọng văn. Kiểm tra xem câu trả lời có làm đúng yêu cầu, có bỏ sót điều kiện, có phân biệt sự thật với giả định và có bằng chứng khi cần không. Với code hãy chạy kiểm thử; với thông tin thay đổi theo thời gian hãy mở tài liệu hiện hành; với quyết định quan trọng hãy nhờ người có chuyên môn xem lại.', 'Checklist: đúng câu hỏi? đủ điều kiện? có giả định? có nguồn? có cách tái kiểm tra?', 'Đưa một câu trả lời AI về cấu hình database vào checklist trên và ghi ra ba điều bạn sẽ xác minh.', ['Vì sao không nên đánh giá bằng sự trôi chảy?', 'Khi nào cần nguồn chính thức hoặc người review?']],
+  'cc-first-session-zero': ['Phiên đầu tiên nên bắt đầu bằng việc hiểu dự án, không giao ngay một thay đổi lớn. Yêu cầu Claude tóm tắt ngôn ngữ, cấu trúc thư mục, lệnh chạy và test; sau đó đối chiếu với repository. Tiếp theo, chọn một tác vụ nhỏ như giải thích một class hoặc viết test cho hàm đơn giản. Xem diff trước khi chấp nhận mọi chỉnh sửa.', 'Hãy đọc repository và báo cáo: (1) stack, (2) entry point, (3) lệnh test/build, (4) các điểm chưa chắc. Chưa sửa file.', 'Trong project của bạn, chạy một phiên chỉ yêu cầu giải thích luồng request; ghi lại phần nào cần xác minh với code thật.', ['Tại sao nên khám phá trước khi sửa?', 'Bạn kiểm tra báo cáo của agent bằng gì?']],
+  'claude-capstone': ['Dự án cuối khóa kết hợp các khái niệm đã học: người dùng đưa tài liệu, ứng dụng tìm đoạn liên quan rồi tạo câu trả lời kèm trích dẫn. Bắt đầu bằng phạm vi nhỏ và dữ liệu giả; xác định cách xử lý tài liệu không liên quan, nội dung độc hại và lỗi API. Chưa cần triển khai hệ thống lớn: mục tiêu là giải thích được từng thành phần, giới hạn và cách đánh giá.', 'Tài liệu → chia đoạn → lập chỉ mục → truy xuất đoạn phù hợp → gửi context cho Claude → trả lời có dẫn nguồn → người dùng kiểm tra.', 'Viết một trang thiết kế: ai dùng, loại tài liệu, luồng hỏi đáp, dữ liệu không được lưu, ba ca kiểm thử và một rủi ro cần human review.', ['RAG giúp giảm vấn đề gì và không bảo đảm điều gì?', 'Bạn đo chất lượng câu trả lời có căn cứ ra sao?']],
+  'claude-explain-capstone': ['Trình bày kỹ thuật tốt theo nhịp: bối cảnh và mục tiêu, giải pháp đã chọn, luồng hoạt động, lý do chọn, trade-off, rủi ro và cách kiểm tra. Nói ngắn trước rồi mở rộng khi người nghe hỏi. Không cần khẳng định hệ thống hoàn hảo; hãy mô tả giới hạn đã biết và kế hoạch cải thiện.', '“Người dùng cần hỏi đáp trên tài liệu nội bộ. Tôi dùng RAG để lấy đoạn liên quan rồi yêu cầu Claude trả lời kèm nguồn. Cách này giảm câu trả lời thiếu căn cứ, nhưng chất lượng phụ thuộc vào bước truy xuất nên tôi đo recall và kiểm thử bộ câu hỏi mẫu.”', 'Tập trình bày dự án trong 90 giây theo cấu trúc: vấn đề → thiết kế → trade-off → kiểm chứng.', ['Một phần trình bày kỹ thuật rõ ràng nên có những ý nào?', 'Làm sao thừa nhận giới hạn mà vẫn thể hiện năng lực?']],
   'cc-plan': ['Explore → Plan → Code → Commit là nhịp làm việc giúp giảm việc sửa sai. Explore để hiểu codebase và yêu cầu; Plan để thống nhất cách làm; Code để thay đổi từng bước; Commit để tạo checkpoint có thể review hoặc quay lại. Không nên nhảy thẳng vào Code khi task chưa rõ.', 'Explore: đọc cấu trúc + tìm code liên quan\nPlan: ghi approach + test\nCode: sửa nhỏ theo plan\nCommit: test pass + diff rõ ràng', 'Chọn một bug trong project backend, viết prompt yêu cầu agent chỉ Explore và Plan, chưa cho sửa file.', ['Khi nào cần Plan Mode?', 'Một plan tốt cần chứa những gì?']],
   'cc-context': ['Context window là phần thông tin Claude có thể nhìn thấy trong một lượt làm việc. Context quá nhiều làm giảm tín hiệu và tăng chi phí; context quá ít khiến agent đoán. /context giúp quan sát mức dùng, /compact tóm tắt lịch sử, /clear bắt đầu lại sạch. Hãy giữ CLAUDE.md, test result và quyết định kiến trúc quan trọng.', 'Task lớn → chia checkpoint\n/context → kiểm tra context\n/compact → giữ quyết định quan trọng\n/clear → bắt đầu task độc lập', 'Tạo checklist thông tin cần giữ trước khi compact một session sửa lỗi production.', ['Khi nào nên compact?', 'Thông tin nào không nên để agent tự đoán?']],
   'cc-claude-md': ['CLAUDE.md là bộ nhớ dạng Markdown của project: lệnh chạy, coding convention, cấu trúc thư mục, quy tắc test và điều không được làm. File tốt ngắn, cụ thể, có thể kiểm chứng; không biến nó thành tài liệu khổng lồ chứa mọi thứ. Quy tắc áp dụng tự động cần viết rõ điều kiện và expected behavior.', '# CLAUDE.md\n## Commands\n- Test: mvn test\n- Build: mvn package\n## Rules\n- Viết test trước khi sửa bug\n- Không commit secret\n- Chạy test liên quan trước khi kết luận', 'Viết CLAUDE.md cho một project Spring Boot gồm commands, architecture, testing và security rules.', ['CLAUDE.md nên chứa những gì?', 'Làm sao biết một rule có thực sự được agent tuân theo?']],
@@ -177,7 +242,7 @@ let selectedLesson = curriculum.find(m=>m.id !== 'claude').lessons[0][0];
 
 function loadProgress(){ try { const p=JSON.parse(localStorage.getItem(STORAGE_KEY)); return p && Array.isArray(p.completed) ? p : {completed:[], assessments:{}}; } catch { return {completed:[], assessments:{}}; } }
 function save(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(progress)); }
-function courseModules(){ return selectedCourse === 'claude' ? curriculum.filter(m=>m.id === 'claude') : curriculum.filter(m=>m.id !== 'claude'); }
+function courseModules(){ return selectedCourse === 'claude' ? curriculum.filter(m=>m.id.startsWith('claude') || m.id === 'claude-capstone') : curriculum.filter(m=>!m.id.startsWith('claude')); }
 function allLessons(){ return courseModules().flatMap(m=>m.lessons); }
 function getLesson(id){ return allLessons().find(l=>l[0]===id); }
 function getModule(){ return courseModules().find(m=>m.id===selectedModule) || courseModules()[0]; }
