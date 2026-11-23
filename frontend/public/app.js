@@ -468,4 +468,5 @@ function bind(){
   document.querySelector('#complete').onclick=async()=>{if(!progress.completed.includes(selectedLesson)) progress.completed.push(selectedLesson); save(); try{await syncCompletion(selectedLesson);}catch{queuePendingProgress(selectedLesson);alert('Chưa đồng bộ được với tài khoản. Bài đã được lưu tạm trên thiết bị và sẽ thử đồng bộ lại khi bạn đăng nhập lần sau.');} render();};
   document.querySelector('#reset').onclick=resetAccountProgress;
 }
+render();
 initializeApp();
