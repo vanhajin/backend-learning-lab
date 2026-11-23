@@ -237,6 +237,7 @@ const courses = {
   claude: { title:'Claude và AI Engineering', icon:'🤖', description:'Từ Claude cơ bản đến Claude Code, API, Skills và MCP.' }
 };
 let selectedCourse = 'be';
+let courseOpened = false;
 let selectedModule = curriculum.find(m=>m.id !== 'claude').id;
 let selectedLesson = curriculum.find(m=>m.id !== 'claude').lessons[0][0];
 
@@ -249,12 +250,25 @@ function getModule(){ return courseModules().find(m=>m.id===selectedModule) || c
 function esc(value){ return String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 function pct(module){ const done=module.lessons.filter(l=>progress.completed.includes(l[0])).length; return Math.round(done/module.lessons.length*100); }
 
+function renderCoursePicker(){
+  const cards=Object.entries(courses).map(([id,course])=>{
+    const lessons=curriculum.filter(m=>id==='claude' ? m.id.startsWith('claude') : !m.id.startsWith('claude')).flatMap(m=>m.lessons);
+    const done=lessons.filter(l=>progress.completed.includes(l[0])).length;
+    const percent=lessons.length?Math.round(done/lessons.length*100):0;
+    return `<button class="course-card" data-open-course="${id}"><span class="course-card-icon">${course.icon}</span><span class="course-card-body"><span class="eyebrow">KHÓA HỌC</span><strong>${course.title}</strong><small>${course.description}</small><span class="course-card-progress"><span><i style="width:${percent}%"></i></span><em>${done}/${lessons.length} bài · ${percent}%</em></span></span><span class="course-card-arrow">→</span></button>`;
+  }).join('');
+  document.querySelector('#app').innerHTML=`<header class="topbar"><div class="brand"><span class="brand-mark">⌁</span><div><strong>Learning Lab</strong><small>Học từng bước, vững nền tảng</small></div></div><button class="reset" id="reset">Đặt lại tiến độ</button></header><main class="course-home"><span class="eyebrow">KHÔNG CẦN VỘI</span><h1>Chọn khóa học<br><em>bạn muốn tiếp tục.</em></h1><p>Tiến độ được lưu riêng cho từng bài học, ngay trên trình duyệt này.</p><section class="course-card-list">${cards}</section><div class="home-note">✦ &nbsp; Mỗi ngày hiểu thêm một điều cũng là tiến bộ.</div></main>`;
+  document.querySelectorAll('[data-open-course]').forEach(b=>b.onclick=()=>{selectedCourse=b.dataset.openCourse;courseOpened=true;selectedModule=courseModules()[0].id;selectedLesson=courseModules()[0].lessons[0][0];render();});
+  document.querySelector('#reset').onclick=()=>{if(confirm('Bạn có chắc muốn đặt lại toàn bộ tiến độ?')){progress={completed:[],assessments:{}};save();renderCoursePicker();}};
+}
+
 function render(){
+  if(!courseOpened){renderCoursePicker();return;}
   const modules=courseModules(), total=allLessons().length, done=progress.completed.filter(id=>allLessons().some(l=>l[0]===id)).length, module=getModule(), lesson=getLesson(selectedLesson) || module.lessons[0], content=topics[lesson[0]] || defaultTopic(lesson), quote=encouragements[done % encouragements.length], course=courses[selectedCourse];
   document.querySelector('#app').innerHTML=`
-    <header class="topbar"><div class="brand"><span class="brand-mark">⌁</span><div><strong>Backend Learning Lab</strong><small>Java · Spring Boot · Tư duy hệ thống</small></div></div><button class="reset" id="reset">Đặt lại tiến độ</button></header>
-    <div class="layout"><aside class="sidebar"><div class="side-label">LỘ TRÌNH CỦA BẠN</div>${modules.map(m=>`<button class="module ${m.id===selectedModule?'active':''}" data-module="${m.id}"><span>${m.icon}</span><div><b>${m.title}</b><small>${m.lessons.filter(l=>progress.completed.includes(l[0])).length}/${m.lessons.length} bài · ${pct(m)}%</small></div></button>`).join('')}<div class="routine"><b>Quy trình học</b><p>Đọc → code → trả lời → trao đổi → ôn lại</p></div></aside>
-    <main class="main"><div class="course-switcher">${Object.entries(courses).map(([id,item])=>`<button class="course-tab ${selectedCourse===id?'active':''}" data-course="${id}">${item.icon} ${item.title}</button>`).join('')}</div><section class="hero"><div><span class="eyebrow">KHÓA HỌC ĐANG HỌC</span><h1>${course.title}.<br><em>Học để làm được.</em></h1><p>${course.description}</p><div class="encouragement"><span>✦</span><div><strong>${quote[0]}</strong><small>${quote[1]}</small></div></div></div><div class="overall"><div class="ring" style="--p:${Math.round(done/total*100)}%"><span>${Math.round(done/total*100)}%</span></div><small>tiến độ khóa học</small></div></section>
+    <header class="topbar"><div class="brand"><span class="brand-mark">⌁</span><div><strong>Learning Lab</strong><small>${course.title}</small></div></div><div class="topbar-actions"><button class="reset" id="home">Tất cả khóa học</button><button class="reset" id="reset">Đặt lại tiến độ</button></div></header>
+    <div class="layout"><aside class="sidebar"><div class="side-label">NỘI DUNG KHÓA HỌC</div>${modules.map((m,i)=>`<button class="module ${m.id===selectedModule?'active':''}" data-module="${m.id}"><span>${m.icon}</span><div><b>${m.title}</b><small>${m.lessons.filter(l=>progress.completed.includes(l[0])).length}/${m.lessons.length} bài · ${pct(m)}%</small></div></button>`).join('')}<div class="routine"><b>Quy trình học</b><p>Đọc → thực hành → tự giải thích → ôn lại</p></div></aside>
+    <main class="main"><section class="hero"><div><span class="eyebrow">ĐANG HỌC · ${course.title}</span><h1>${module.title}.<br><em>Học để làm được.</em></h1><p>${module.desc}</p><div class="encouragement"><span>✦</span><div><strong>${quote[0]}</strong><small>${quote[1]}</small></div></div></div><div class="overall"><div class="ring" style="--p:${Math.round(done/total*100)}%"><span>${Math.round(done/total*100)}%</span></div><small>tiến độ khóa học</small></div></section>
     <section class="stats"><div><small>BÀI ĐÃ HOÀN THÀNH</small><strong>${done}<i>/${total}</i></strong></div><div><small>MODULE ĐANG HỌC</small><strong>${module.title}</strong></div><div><small>NHỊP HỌC ĐỀ XUẤT</small><strong>30 phút <i>/ ngày</i></strong></div></section>
     <section class="content-grid"><div class="lessons panel"><div class="panel-head"><div><span class="eyebrow">MODULE ${modules.indexOf(module)+1}</span><h2>${module.title}</h2><p>${module.desc}</p></div><span class="module-percent">${pct(module)}%</span></div>${module.lessons.map(l=>`<button class="lesson-row ${l[0]===lesson[0]?'selected':''}" data-lesson="${l[0]}"><span class="check ${progress.completed.includes(l[0])?'done':''}">${progress.completed.includes(l[0])?'✓':''}</span><div><b>${l[1]}</b><small>${l[2]}</small></div><span>→</span></button>`).join('')}</div>
     <article class="lesson panel"><div class="lesson-meta"><span>${module.icon} ${module.title}</span><span>${progress.completed.includes(lesson[0])?'ĐÃ HOÀN THÀNH':'BÀI TIẾP THEO'}</span></div><h2>${lesson[1]}</h2><p class="lead">${lesson[2]}</p><h3>Điều cần hiểu</h3><p>${content.theory.replace(/\n\n/g,'</p><p>')}</p><h3>Ví dụ</h3><pre><code>${esc(content.example)}</code></pre><h3>Bài tập nhỏ</h3><div class="exercise">${content.exercise}</div><div class="interview"><div><span class="eyebrow">LUYỆN PHỎNG VẤN</span><h3>Hãy thử nói bằng lời của bạn</h3></div>${content.questions.map((q,i)=>`<div class="question"><b>${i+1}</b><span>${q}</span></div>`).join('')}${interviewModels[lesson[0]]?`<details class="model-answer"><summary>Xem mẫu trả lời có cấu trúc</summary><p>${interviewModels[lesson[0]]}</p></details>`:''}<textarea id="answer" placeholder="Viết câu trả lời của bạn ở đây... Sau đó mang câu trả lời vào cuộc trò chuyện để được mình góp ý cách sắp xếp."></textarea><button class="primary" id="complete">${progress.completed.includes(lesson[0])?'Đã hoàn thành ✓':'Đánh dấu đã học'}</button></div></article></section></main></div>`;
@@ -264,7 +278,7 @@ async function syncCompletion(lessonId) {
   try { await fetch(`${API_BASE}/progress/demo/${lessonId}`, { method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify({completed:true}) }); } catch { /* Backend chưa chạy: vẫn học offline bằng localStorage. */ }
 }
 function bind(){
-  document.querySelectorAll('[data-course]').forEach(b=>b.onclick=()=>{selectedCourse=b.dataset.course; selectedModule=courseModules()[0].id; selectedLesson=courseModules()[0].lessons[0][0]; render();});
+  document.querySelector('#home').onclick=()=>{courseOpened=false;renderCoursePicker();};
   document.querySelectorAll('[data-module]').forEach(b=>b.onclick=()=>{selectedModule=b.dataset.module; selectedLesson=getModule().lessons[0][0]; render();});
   document.querySelectorAll('[data-lesson]').forEach(b=>b.onclick=()=>{selectedLesson=b.dataset.lesson; render();});
   document.querySelector('#complete').onclick=async()=>{if(!progress.completed.includes(selectedLesson)) progress.completed.push(selectedLesson); save(); await syncCompletion(selectedLesson); render();};
