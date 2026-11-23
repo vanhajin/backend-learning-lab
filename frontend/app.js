@@ -243,7 +243,7 @@ let selectedLesson = curriculum.find(m=>m.id !== 'claude').lessons[0][0];
 
 function loadProgress(){ try { const p=JSON.parse(localStorage.getItem(STORAGE_KEY)); return p && Array.isArray(p.completed) ? p : {completed:[], assessments:{}}; } catch { return {completed:[], assessments:{}}; } }
 function save(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(progress)); }
-function courseModules(){ return selectedCourse === 'claude' ? curriculum.filter(m=>m.id.startsWith('claude') || m.id === 'claude-capstone') : curriculum.filter(m=>!m.id.startsWith('claude')); }
+function courseModules(){ return selectedCourse === 'claude' ? curriculum.filter(m=>m.id !== 'claude' && m.id.startsWith('claude')) : curriculum.filter(m=>!m.id.startsWith('claude')); }
 function allLessons(){ return courseModules().flatMap(m=>m.lessons); }
 function getLesson(id){ return allLessons().find(l=>l[0]===id); }
 function getModule(){ return courseModules().find(m=>m.id===selectedModule) || courseModules()[0]; }
@@ -252,7 +252,7 @@ function pct(module){ const done=module.lessons.filter(l=>progress.completed.inc
 
 function renderCoursePicker(){
   const cards=Object.entries(courses).map(([id,course])=>{
-    const lessons=curriculum.filter(m=>id==='claude' ? m.id.startsWith('claude') : !m.id.startsWith('claude')).flatMap(m=>m.lessons);
+    const lessons=curriculum.filter(m=>id==='claude' ? m.id !== 'claude' && m.id.startsWith('claude') : !m.id.startsWith('claude')).flatMap(m=>m.lessons);
     const done=lessons.filter(l=>progress.completed.includes(l[0])).length;
     const percent=lessons.length?Math.round(done/lessons.length*100):0;
     return `<button class="course-card" data-open-course="${id}"><span class="course-card-icon">${course.icon}</span><span class="course-card-body"><span class="eyebrow">KHÓA HỌC</span><strong>${course.title}</strong><small>${course.description}</small><span class="course-card-progress"><span><i style="width:${percent}%"></i></span><em>${done}/${lessons.length} bài · ${percent}%</em></span></span><span class="course-card-arrow">→</span></button>`;
