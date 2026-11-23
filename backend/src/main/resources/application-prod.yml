@@ -5,7 +5,7 @@ server:
       timeout: 12h
       cookie:
         http-only: true
-        same-site: lax
+        same-site: none
         secure: ${SESSION_COOKIE_SECURE:true}
 spring:
   datasource:

@@ -18,7 +18,7 @@ FRONTEND_URL=http://localhost:5173
 SESSION_COOKIE_SECURE=false
 ```
 
-Trên Render, giữ `SESSION_COOKIE_SECURE=true` và đặt `FRONTEND_URL` bằng domain frontend. Email xác minh và chức năng đặt lại mật khẩu chưa được cấu hình.
+Trên Render, giữ `SESSION_COOKIE_SECURE=true`, dùng `SameSite=None` cho cookie và đặt `FRONTEND_URL` bằng domain frontend. Frontend và backend đang chạy ở hai domain Render riêng, nên cookie phiên và CSRF cần được gửi qua origin khác. Email xác minh và chức năng đặt lại mật khẩu chưa được cấu hình.
 
 Ví dụ local với PostgreSQL:
 
