@@ -11,6 +11,41 @@ const encouragements = [
 ];
 
 const curriculum = [
+  { id:'claude', title:'Claude Code và AI Engineering', icon:'🤖', desc:'Học cách dùng Claude, Claude Code, Skills, Anthropic API và MCP trong quy trình phát triển phần mềm.', lessons:[
+    ['claude-what','Claude là gì?','Mô hình ngôn ngữ, context và khác biệt giữa chat với coding agent.'],
+    ['claude-first','Cuộc trò chuyện đầu tiên','Viết prompt rõ ràng, cung cấp context và đánh giá kết quả.'],
+    ['claude-results','Cách nhận kết quả tốt hơn','Chỉ dẫn, ví dụ, format đầu ra và vòng lặp cải thiện.'],
+    ['claude-projects','Projects và kiến thức nền','Tổ chức tài liệu, quy tắc và context cho một công việc dài.'],
+    ['claude-artifacts','Artifacts và sản phẩm đầu ra','Tạo, xem và cải thiện tài liệu hoặc prototype cùng Claude.'],
+    ['cc-agent','Coding agent hoạt động thế nào?','Agentic loop: đọc context, dùng tool, thay đổi và kiểm chứng.'],
+    ['cc-install','Cài đặt và chạy Claude Code','Terminal, VS Code, JetBrains, Desktop và web workflow.'],
+    ['cc-prompt','Prompt đầu tiên trong codebase','Cách giao nhiệm vụ có phạm vi, tiêu chí và giới hạn rõ ràng.'],
+    ['cc-plan','Explore → Plan → Code → Commit','Quy trình làm feature an toàn và dễ review.'],
+    ['cc-context','Quản lý context','/context, /compact, /clear và cách giữ thông tin quan trọng.'],
+    ['cc-review','Dùng Claude để review code','Tìm bug, rủi ro bảo mật, thiếu test và cách kiểm chứng nhận xét.'],
+    ['cc-claude-md','CLAUDE.md','Lưu quy ước project, lệnh build, kiến trúc và tiêu chí hoàn thành.'],
+    ['cc-subagents','Subagents','Phân tách nhiệm vụ và giao việc cho agent chuyên trách.'],
+    ['cc-skills','Skills là gì?','Đóng gói quy trình lặp lại thành hướng dẫn tự động áp dụng.'],
+    ['cc-skill-build','Tạo Skill đầu tiên','SKILL.md, frontmatter, description và progressive disclosure.'],
+    ['cc-skill-share','Chia sẻ và troubleshoot Skills','Repository, plugin, priority conflict và lỗi không trigger.'],
+    ['cc-permission','Permission modes','Chọn mức tự động hóa phù hợp với rủi ro của nhiệm vụ.'],
+    ['cc-hooks','Hooks và guardrails','Chặn lệnh nguy hiểm, chạy formatter/test và kiểm soát hành vi xác định.'],
+    ['cc-automation','Headless, routines và tự động hóa','Chạy tác vụ lặp lại, scheduled run và kiểm tra kết quả không giám sát.'],
+    ['cc-github','GitHub integration và code review','Đưa Claude vào pull request và quy trình review của team.'],
+    ['api-claude','Anthropic API từ đầu','API key, request, model, system prompt và message format.'],
+    ['api-conversation','Multi-turn conversation','Lưu context, messages, token và thiết kế hội thoại nhiều lượt.'],
+    ['api-tools','Tool use và structured output','Khai báo tool, nhận tool call, thực thi và trả kết quả cho Claude.'],
+    ['api-rag','RAG và agentic search','Chunking, embeddings, BM25, contextual retrieval và pipeline.'],
+    ['api-features','Tính năng nâng cao của API','Image, PDF, citations, prompt caching và extended thinking.'],
+    ['mcp-intro','MCP là gì?','Client, server, transport và luồng request-response với hệ thống ngoài.'],
+    ['mcp-tools','MCP tools','Tool do model điều khiển để thực hiện hành động có kiểm soát.'],
+    ['mcp-resources','MCP resources','Expose dữ liệu chỉ đọc bằng URI tĩnh hoặc URI template.'],
+    ['mcp-prompts','MCP prompts','Prompt có sẵn do người dùng chọn cho workflow lặp lại.'],
+    ['mcp-python','Xây MCP server bằng Python','SDK, decorator, type hints và MCP Inspector.'],
+    ['mcp-client','Xây MCP client','Kết nối client, gọi tool, đọc resource và dùng prompt.'],
+    ['ai-workflows','Agents và workflows','Chaining, routing, parallelization và chọn pattern phù hợp.'],
+    ['ai-safety','Kiểm chứng và an toàn khi dùng AI','Permissions, secrets, prompt injection, test và human review.'],
+  ]},
   { id:'start', title:'Bắt đầu với Backend', icon:'🚀', desc:'Hiểu backend là gì, cách chạy project và cách học hiệu quả.', lessons:[
     ['start-backend','Backend là gì?','Client, server, database, API và vòng đời một request.'],
     ['start-tools','Bộ công cụ của Backend Developer','IDE, terminal, Git, Maven và cách đọc cấu trúc project.'],
@@ -95,6 +130,16 @@ const topics = {
 };
 
 const lessonTopics = {
+  'claude-what': ['Claude là một mô hình ngôn ngữ có thể nhận context và tạo phản hồi. Claude Code là coding agent: nó có thể đọc repository, gọi tool, chạy lệnh, sửa file và tự kiểm tra theo một vòng lặp. Khác biệt quan trọng với chat thông thường là agent có quyền hành động trong môi trường, nên permission và verification trở thành một phần của kỹ thuật sử dụng.', 'Người dùng → Claude nhận context → chọn tool → đọc/chỉnh sửa code → chạy test → báo kết quả', 'Viết một đoạn giải thích ngắn: khi nào dùng chat, khi nào dùng Claude Code, và rủi ro khi cho agent quyền chạy lệnh.', ['Claude Code khác chatbot ở điểm nào?', 'Vì sao tool và permission quan trọng với coding agent?']],
+  'cc-plan': ['Explore → Plan → Code → Commit là nhịp làm việc giúp giảm việc sửa sai. Explore để hiểu codebase và yêu cầu; Plan để thống nhất cách làm; Code để thay đổi từng bước; Commit để tạo checkpoint có thể review hoặc quay lại. Không nên nhảy thẳng vào Code khi task chưa rõ.', 'Explore: đọc cấu trúc + tìm code liên quan\nPlan: ghi approach + test\nCode: sửa nhỏ theo plan\nCommit: test pass + diff rõ ràng', 'Chọn một bug trong project backend, viết prompt yêu cầu agent chỉ Explore và Plan, chưa cho sửa file.', ['Khi nào cần Plan Mode?', 'Một plan tốt cần chứa những gì?']],
+  'cc-context': ['Context window là phần thông tin Claude có thể nhìn thấy trong một lượt làm việc. Context quá nhiều làm giảm tín hiệu và tăng chi phí; context quá ít khiến agent đoán. /context giúp quan sát mức dùng, /compact tóm tắt lịch sử, /clear bắt đầu lại sạch. Hãy giữ CLAUDE.md, test result và quyết định kiến trúc quan trọng.', 'Task lớn → chia checkpoint\n/context → kiểm tra context\n/compact → giữ quyết định quan trọng\n/clear → bắt đầu task độc lập', 'Tạo checklist thông tin cần giữ trước khi compact một session sửa lỗi production.', ['Khi nào nên compact?', 'Thông tin nào không nên để agent tự đoán?']],
+  'cc-claude-md': ['CLAUDE.md là bộ nhớ dạng Markdown của project: lệnh chạy, coding convention, cấu trúc thư mục, quy tắc test và điều không được làm. File tốt ngắn, cụ thể, có thể kiểm chứng; không biến nó thành tài liệu khổng lồ chứa mọi thứ. Quy tắc áp dụng tự động cần viết rõ điều kiện và expected behavior.', '# CLAUDE.md\n## Commands\n- Test: mvn test\n- Build: mvn package\n## Rules\n- Viết test trước khi sửa bug\n- Không commit secret\n- Chạy test liên quan trước khi kết luận', 'Viết CLAUDE.md cho một project Spring Boot gồm commands, architecture, testing và security rules.', ['CLAUDE.md nên chứa những gì?', 'Làm sao biết một rule có thực sự được agent tuân theo?']],
+  'cc-skills': ['Skill là gói hướng dẫn tái sử dụng để Claude áp dụng đúng lúc cho một loại task. Một Skill thường có SKILL.md với frontmatter name/description và nội dung hướng dẫn; tài liệu phụ, script hoặc reference chỉ được mở khi cần để tiết kiệm context. Skill khác CLAUDE.md ở chỗ nó đóng gói workflow chuyên biệt và có thể chia sẻ.', '---\nname: spring-review\ndescription: Review code Spring Boot và kiểm tra transaction, security, test\n---\n\n# Quy trình\n1. Đọc diff\n2. Tìm rủi ro\n3. Chạy test\n4. Báo finding theo mức độ', 'Tạo Skill “review Spring Boot” với trigger description, quy trình 4 bước và một checklist.', ['Skill khác CLAUDE.md thế nào?', 'Vì sao description của Skill cần cụ thể?']],
+  'api-claude': ['Anthropic API dùng message request để gửi system instruction và các message user/assistant. API key phải nằm ở environment variable hoặc secret manager, không commit vào repository. Một request production cần timeout, retry có kiểm soát, giới hạn token, logging an toàn và xử lý lỗi rate limit.', 'POST /v1/messages\nHeaders: x-api-key, anthropic-version\nBody: { model, max_tokens, system, messages }', 'Thiết kế một service Spring Boot nhận câu hỏi và gọi Claude API; liệt kê config không được hard-code.', ['System prompt và user message khác nhau thế nào?', 'Vì sao không nên log toàn bộ API key hoặc dữ liệu nhạy cảm?']],
+  'api-tools': ['Tool use cho phép Claude đề xuất gọi một function với input có schema. Ứng dụng phải validate input, kiểm tra permission, thực thi tool và gửi tool result lại cho Claude. Claude không tự có quyền làm mọi việc; application là nơi quyết định tool nào được phép và kết quả nào được trả.', 'Claude → tool_use{name: get_order, input:{id:101}}\nApp validates + executes\nApp → tool_result\nClaude tạo câu trả lời cuối', 'Thiết kế tool getOrder chỉ cho phép user xem order của chính mình; nêu validation và authorization.', ['Tool call nên được bảo vệ ở đâu?', 'Structured input giúp giảm lỗi gì?']],
+  'mcp-intro': ['MCP là giao thức chuẩn hóa cách AI client kết nối tới server cung cấp context và hành động. MCP server có thể cung cấp tools, resources và prompts; client như Claude Code kết nối và điều phối chúng. MCP tách phần tích hợp hệ thống khỏi model, giúp tái sử dụng connector và kiểm soát quyền rõ hơn.', 'Claude/Client → MCP request → MCP Server → hệ thống ngoài\nMCP Server → result → Client → Claude', 'Vẽ luồng khi Claude đọc một tài liệu qua MCP resource và khi Claude gọi một tool cập nhật tài liệu.', ['MCP giải quyết vấn đề gì?', 'Tools, resources và prompts khác nhau thế nào?']],
+  'mcp-tools': ['MCP tool là hành động do model điều khiển: model quyết định khi nào cần gọi, nhưng client/server vẫn phải kiểm tra input và permission. Tool nên có tên rõ, mô tả chính xác, schema chặt và kết quả có cấu trúc. Các hành động nguy hiểm nên yêu cầu confirmation hoặc giới hạn phạm vi.', '@server.tool()\ndef get_order(order_id: int) -> dict:\n    """Đọc order theo id."""\n    return repository.find(order_id)', 'Thiết kế một MCP tool đọc trạng thái deployment và một tool restart service; xác định tool nào cần confirmation.', ['MCP tool khác function calling thông thường ở đâu?', 'Làm sao giới hạn tool nguy hiểm?']],
+  'mcp-resources': ['MCP resource là dữ liệu để client đọc, không phải hành động thay đổi state. Resource có thể dùng URI tĩnh hoặc URI template có tham số. MIME type giúp client biết cách diễn giải text, JSON hoặc tài liệu. Resource phù hợp cho schema, tài liệu, cấu hình hoặc dữ liệu tham chiếu.', 'resources://orders/101\nresources://orders/{order_id}\nMIME: application/json', 'Thiết kế resource template cho tài liệu API theo service và version.', ['Khi nào dùng resource thay vì tool?', 'Vì sao cần MIME type?']],
   'start-backend': ['Backend là phần xử lý phía server: nhận request từ client, áp dụng business rule, đọc/ghi database và trả response. Một request thường đi qua client → network → web server → controller → service → repository → database rồi quay về theo chiều ngược lại. Hiểu luồng này giúp bạn biết nên tìm lỗi ở đâu thay vì đoán.', 'Client: GET /products/10\n        ↓\nController → Service → Repository → Database\n        ↓\nHTTP 200 + JSON response', 'Vẽ luồng khi người dùng đăng nhập. Ghi rõ dữ liệu nào đi qua client, API và database; phần nào không được trả về cho client.', ['Backend khác frontend ở điểm nào?', 'Một request đi qua những lớp nào?']],
   'start-tools': ['IDE giúp viết và debug code; terminal giúp chạy lệnh; Git quản lý lịch sử thay đổi; Maven quản lý dependency và build Java project. Đừng học công cụ bằng cách nhớ lệnh rời rạc: hãy hiểu mỗi lệnh tạo ra kết quả gì và đọc output sau khi chạy.', 'mvn test\ngit status\ngit diff\njava -version', 'Mở một project Spring Boot, tìm file pom.xml, class main, application.yml và chạy test. Ghi lại mỗi file chịu trách nhiệm gì.', ['pom.xml dùng để làm gì?', 'Khi code không chạy, bạn kiểm tra những gì trước?']],
   'start-debug': ['Debug không phải là thử sửa ngẫu nhiên. Hãy đọc error message, tìm dòng code đầu tiên thuộc về project của bạn, truy ngược input gây lỗi và tạo một giả thuyết. Log giúp quan sát khi chạy thật; breakpoint giúp xem state tại một thời điểm. Luôn sửa nguyên nhân gốc thay vì chỉ che triệu chứng.', 'ERROR: Cannot find user\n\n1. Đọc exception\n2. Tìm stack trace\n3. Kiểm tra userId đi vào\n4. Kiểm tra query\n5. Viết test tái hiện lỗi', 'Chọn một lỗi NullPointerException trong code Java và viết 5 bước điều tra trước khi sửa.', ['Stack trace đọc từ đâu?', 'Khác nhau giữa log và breakpoint là gì?']],
@@ -122,25 +167,31 @@ const defaultTopic = (lesson) => { const t=lessonTopics[lesson[0]]; return t ? {
 const interviewModels = { 'java-oop':'OOP tổ chức chương trình xoay quanh object gồm dữ liệu và hành vi. Bốn đặc điểm thường được nhắc đến là encapsulation, abstraction, inheritance và polymorphism. Trong backend, tôi dùng encapsulation để bảo vệ business rule, abstraction qua interface để giảm coupling và polymorphism để thay đổi implementation mà không sửa code sử dụng. Tôi ưu tiên composition thay vì inheritance khi quan hệ không thực sự là “is-a”.' };
 
 let progress = loadProgress();
-let selectedModule = curriculum[0].id;
-let selectedLesson = curriculum[0].lessons[0][0];
+const courses = {
+  be: { title:'Backend Java/Spring Boot', icon:'⚙️', description:'Từ nền tảng lập trình đến xây dựng và vận hành backend production.' },
+  claude: { title:'Claude và AI Engineering', icon:'🤖', description:'Từ Claude cơ bản đến Claude Code, API, Skills và MCP.' }
+};
+let selectedCourse = 'be';
+let selectedModule = curriculum.find(m=>m.id !== 'claude').id;
+let selectedLesson = curriculum.find(m=>m.id !== 'claude').lessons[0][0];
 
 function loadProgress(){ try { const p=JSON.parse(localStorage.getItem(STORAGE_KEY)); return p && Array.isArray(p.completed) ? p : {completed:[], assessments:{}}; } catch { return {completed:[], assessments:{}}; } }
 function save(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(progress)); }
-function allLessons(){ return curriculum.flatMap(m=>m.lessons); }
+function courseModules(){ return selectedCourse === 'claude' ? curriculum.filter(m=>m.id === 'claude') : curriculum.filter(m=>m.id !== 'claude'); }
+function allLessons(){ return courseModules().flatMap(m=>m.lessons); }
 function getLesson(id){ return allLessons().find(l=>l[0]===id); }
-function getModule(){ return curriculum.find(m=>m.id===selectedModule); }
+function getModule(){ return courseModules().find(m=>m.id===selectedModule) || courseModules()[0]; }
 function esc(value){ return String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 function pct(module){ const done=module.lessons.filter(l=>progress.completed.includes(l[0])).length; return Math.round(done/module.lessons.length*100); }
 
 function render(){
-  const total=allLessons().length, done=progress.completed.length, module=getModule(), lesson=getLesson(selectedLesson) || module.lessons[0], content=topics[lesson[0]] || defaultTopic(lesson), quote=encouragements[done % encouragements.length];
+  const modules=courseModules(), total=allLessons().length, done=progress.completed.filter(id=>allLessons().some(l=>l[0]===id)).length, module=getModule(), lesson=getLesson(selectedLesson) || module.lessons[0], content=topics[lesson[0]] || defaultTopic(lesson), quote=encouragements[done % encouragements.length], course=courses[selectedCourse];
   document.querySelector('#app').innerHTML=`
     <header class="topbar"><div class="brand"><span class="brand-mark">⌁</span><div><strong>Backend Learning Lab</strong><small>Java · Spring Boot · Tư duy hệ thống</small></div></div><button class="reset" id="reset">Đặt lại tiến độ</button></header>
-    <div class="layout"><aside class="sidebar"><div class="side-label">LỘ TRÌNH CỦA BẠN</div>${curriculum.map(m=>`<button class="module ${m.id===selectedModule?'active':''}" data-module="${m.id}"><span>${m.icon}</span><div><b>${m.title}</b><small>${m.lessons.filter(l=>progress.completed.includes(l[0])).length}/${m.lessons.length} bài · ${pct(m)}%</small></div></button>`).join('')}<div class="routine"><b>Quy trình học</b><p>Đọc → code → trả lời → trao đổi → ôn lại</p></div></aside>
-    <main class="main"><section class="hero"><div><span class="eyebrow">BẢNG ĐIỀU KHIỂN HỌC TẬP</span><h1>Xây nền tảng.<br><em>Nói rõ vấn đề.</em></h1><p>Học backend có hệ thống và luyện cách truyền đạt như một kỹ sư.</p><div class="encouragement"><span>✦</span><div><strong>${quote[0]}</strong><small>${quote[1]}</small></div></div></div><div class="overall"><div class="ring" style="--p:${Math.round(done/total*100)}%"><span>${Math.round(done/total*100)}%</span></div><small>tiến độ tổng</small></div></section>
+    <div class="layout"><aside class="sidebar"><div class="side-label">LỘ TRÌNH CỦA BẠN</div>${modules.map(m=>`<button class="module ${m.id===selectedModule?'active':''}" data-module="${m.id}"><span>${m.icon}</span><div><b>${m.title}</b><small>${m.lessons.filter(l=>progress.completed.includes(l[0])).length}/${m.lessons.length} bài · ${pct(m)}%</small></div></button>`).join('')}<div class="routine"><b>Quy trình học</b><p>Đọc → code → trả lời → trao đổi → ôn lại</p></div></aside>
+    <main class="main"><div class="course-switcher">${Object.entries(courses).map(([id,item])=>`<button class="course-tab ${selectedCourse===id?'active':''}" data-course="${id}">${item.icon} ${item.title}</button>`).join('')}</div><section class="hero"><div><span class="eyebrow">KHÓA HỌC ĐANG HỌC</span><h1>${course.title}.<br><em>Học để làm được.</em></h1><p>${course.description}</p><div class="encouragement"><span>✦</span><div><strong>${quote[0]}</strong><small>${quote[1]}</small></div></div></div><div class="overall"><div class="ring" style="--p:${Math.round(done/total*100)}%"><span>${Math.round(done/total*100)}%</span></div><small>tiến độ khóa học</small></div></section>
     <section class="stats"><div><small>BÀI ĐÃ HOÀN THÀNH</small><strong>${done}<i>/${total}</i></strong></div><div><small>MODULE ĐANG HỌC</small><strong>${module.title}</strong></div><div><small>NHỊP HỌC ĐỀ XUẤT</small><strong>30 phút <i>/ ngày</i></strong></div></section>
-    <section class="content-grid"><div class="lessons panel"><div class="panel-head"><div><span class="eyebrow">MODULE ${curriculum.indexOf(module)+1}</span><h2>${module.title}</h2><p>${module.desc}</p></div><span class="module-percent">${pct(module)}%</span></div>${module.lessons.map(l=>`<button class="lesson-row ${l[0]===lesson[0]?'selected':''}" data-lesson="${l[0]}"><span class="check ${progress.completed.includes(l[0])?'done':''}">${progress.completed.includes(l[0])?'✓':''}</span><div><b>${l[1]}</b><small>${l[2]}</small></div><span>→</span></button>`).join('')}</div>
+    <section class="content-grid"><div class="lessons panel"><div class="panel-head"><div><span class="eyebrow">MODULE ${modules.indexOf(module)+1}</span><h2>${module.title}</h2><p>${module.desc}</p></div><span class="module-percent">${pct(module)}%</span></div>${module.lessons.map(l=>`<button class="lesson-row ${l[0]===lesson[0]?'selected':''}" data-lesson="${l[0]}"><span class="check ${progress.completed.includes(l[0])?'done':''}">${progress.completed.includes(l[0])?'✓':''}</span><div><b>${l[1]}</b><small>${l[2]}</small></div><span>→</span></button>`).join('')}</div>
     <article class="lesson panel"><div class="lesson-meta"><span>${module.icon} ${module.title}</span><span>${progress.completed.includes(lesson[0])?'ĐÃ HOÀN THÀNH':'BÀI TIẾP THEO'}</span></div><h2>${lesson[1]}</h2><p class="lead">${lesson[2]}</p><h3>Điều cần hiểu</h3><p>${content.theory.replace(/\n\n/g,'</p><p>')}</p><h3>Ví dụ</h3><pre><code>${esc(content.example)}</code></pre><h3>Bài tập nhỏ</h3><div class="exercise">${content.exercise}</div><div class="interview"><div><span class="eyebrow">LUYỆN PHỎNG VẤN</span><h3>Hãy thử nói bằng lời của bạn</h3></div>${content.questions.map((q,i)=>`<div class="question"><b>${i+1}</b><span>${q}</span></div>`).join('')}${interviewModels[lesson[0]]?`<details class="model-answer"><summary>Xem mẫu trả lời có cấu trúc</summary><p>${interviewModels[lesson[0]]}</p></details>`:''}<textarea id="answer" placeholder="Viết câu trả lời của bạn ở đây... Sau đó mang câu trả lời vào cuộc trò chuyện để được mình góp ý cách sắp xếp."></textarea><button class="primary" id="complete">${progress.completed.includes(lesson[0])?'Đã hoàn thành ✓':'Đánh dấu đã học'}</button></div></article></section></main></div>`;
   bind();
 }
@@ -148,6 +199,7 @@ async function syncCompletion(lessonId) {
   try { await fetch(`${API_BASE}/progress/demo/${lessonId}`, { method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify({completed:true}) }); } catch { /* Backend chưa chạy: vẫn học offline bằng localStorage. */ }
 }
 function bind(){
+  document.querySelectorAll('[data-course]').forEach(b=>b.onclick=()=>{selectedCourse=b.dataset.course; selectedModule=courseModules()[0].id; selectedLesson=courseModules()[0].lessons[0][0]; render();});
   document.querySelectorAll('[data-module]').forEach(b=>b.onclick=()=>{selectedModule=b.dataset.module; selectedLesson=getModule().lessons[0][0]; render();});
   document.querySelectorAll('[data-lesson]').forEach(b=>b.onclick=()=>{selectedLesson=b.dataset.lesson; render();});
   document.querySelector('#complete').onclick=async()=>{if(!progress.completed.includes(selectedLesson)) progress.completed.push(selectedLesson); save(); await syncCompletion(selectedLesson); render();};
