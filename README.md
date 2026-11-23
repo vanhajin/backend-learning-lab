@@ -1,6 +1,6 @@
 # Backend Learning Lab
 
-Website học Java/Spring Boot, tách frontend và backend.
+Website học Java/Spring Boot, Claude và AI hỗ trợ phát triển phần mềm theo đặc tả. Frontend và backend được tách riêng; tiến độ học được lưu theo tài khoản.
 
 ## Chạy backend
 
@@ -9,7 +9,16 @@ cd backend
 mvn spring-boot:run
 ```
 
-Backend chạy tại `http://localhost:8080` và dùng PostgreSQL. Khi deploy, cấu hình ba biến môi trường: `DATABASE_JDBC_URL`, `DATABASE_USERNAME`, `DATABASE_PASSWORD`.
+Backend chạy tại `http://localhost:8080` và dùng PostgreSQL. Tạo tài khoản bằng địa chỉ `@gmail.com` cùng mật khẩu riêng (tối thiểu 8 ký tự). Mật khẩu được hash bằng BCrypt; tiến độ lưu theo tài khoản trong PostgreSQL.
+
+Khi chạy local, cho backend biết origin của frontend và có thể tắt thuộc tính Secure của cookie vì đang dùng HTTP:
+
+```text
+FRONTEND_URL=http://localhost:5173
+SESSION_COOKIE_SECURE=false
+```
+
+Trên Render, giữ `SESSION_COOKIE_SECURE=true` và đặt `FRONTEND_URL` bằng domain frontend. Email xác minh và chức năng đặt lại mật khẩu chưa được cấu hình.
 
 Ví dụ local với PostgreSQL:
 
@@ -27,4 +36,4 @@ npm install
 npm run dev
 ```
 
-Mở `http://localhost:5173`. Bản frontend hiện dùng nội dung học local; API backend đã sẵn sàng cho việc đồng bộ tiến độ ở bước tiếp theo.
+Mở `http://localhost:5173`, đăng ký/đăng nhập rồi chọn khóa học. Tiến độ cũ trên trình duyệt được nhập vào tài khoản lần đầu nếu tài khoản chưa có tiến độ.
