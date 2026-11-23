@@ -56,7 +56,12 @@ public class AuthController {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Gmail này đã được đăng ký.");
         }
         accounts.save(new LearningAccount(email, passwordEncoder.encode(credentials.password())));
-        return authenticate(email, credentials.password(), request, response);
+        // Account creation is successful independently of session establishment.
+        // The client can then call /login and report session errors accurately.
+        return ResponseEntity.status(HttpStatus.CREATED).body(Map.of(
+                "email", email,
+                "message", "Tạo tài khoản thành công. Vui lòng đăng nhập để bắt đầu học."
+        ));
     }
 
     @PostMapping("/login")

@@ -16,6 +16,7 @@ Khi chạy local, cho backend biết origin của frontend và có thể tắt t
 ```text
 FRONTEND_URL=http://localhost:5173
 SESSION_COOKIE_SECURE=false
+SESSION_COOKIE_SAME_SITE=lax
 ```
 
 Trên Render, giữ `SESSION_COOKIE_SECURE=true`, dùng `SameSite=None` cho cookie và đặt `FRONTEND_URL` bằng domain frontend. Frontend và backend đang chạy ở hai domain Render riêng, nên cookie phiên và CSRF cần được gửi qua origin khác. Email xác minh và chức năng đặt lại mật khẩu chưa được cấu hình.

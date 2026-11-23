@@ -21,7 +21,9 @@ public class SecurityConfig {
     @Value("${SESSION_COOKIE_SECURE:true}")
     private boolean secureCookies;
 
-    @Value("${SESSION_COOKIE_SAME_SITE:lax}")
+    // Frontend and API are deployed on separate Render domains, so the CSRF
+    // cookie must be sent in cross-site fetch requests in production.
+    @Value("${SESSION_COOKIE_SAME_SITE:none}")
     private String sameSite;
 
     @Bean

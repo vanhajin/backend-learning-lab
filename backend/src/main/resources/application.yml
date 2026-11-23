@@ -4,7 +4,7 @@ server:
     session:
       cookie:
         http-only: true
-        same-site: ${SESSION_COOKIE_SAME_SITE:lax}
+        same-site: ${SESSION_COOKIE_SAME_SITE:none}
         secure: ${SESSION_COOKIE_SECURE:true}
 spring:
   datasource:

@@ -401,6 +401,7 @@ function renderAuth(){
     try{
       const route=authMode==='register'?'/auth/register':'/auth/login';
       await authRequest(route,{method:'POST',body:JSON.stringify({email,password})});
+      if(authMode==='register'){authMode='login';authMessage='Tạo tài khoản thành công. Hãy đăng nhập bằng Gmail và mật khẩu vừa tạo.';authBusy=false;renderAuth();return;}
       await refreshCsrf(); authUser=await authRequest('/auth/me'); await loadAccountProgress(); authMessage='';authBusy=false;courseOpened=false;render();
     }catch(error){authBusy=false;authMessage=error instanceof TypeError?'Không kết nối được máy chủ. Kiểm tra mạng hoặc cấu hình backend rồi thử lại.':error.message;renderAuth();}
   };
